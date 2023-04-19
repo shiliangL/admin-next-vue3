@@ -6,9 +6,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import { setupProdMockServer } from './mockProdServer';
-setupProdMockServer();
-
 const app = createApp(App)
 
 app.use(createPinia())

@@ -30,5 +30,10 @@ import AppRouterBody from './AppRouterBody/index.vue'
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
+  .el-header{
+    --el-header-height: 50px;
+    --el-header-padding: 0 10px;
+  }
 }
 </style>

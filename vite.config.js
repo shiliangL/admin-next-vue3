@@ -49,15 +49,15 @@ export default ({ mode,command })=> {
         })],
       }),
       viteMockServe({
-        mockPath: "mock",
-        logger: true,
-        watchFiles: true,
-        localEnabled: command === 'serve',
-        prodEnabled: command !== 'serve' && prodMock,
-        // injectCode: `
-        //   import { setupProdMockServer } from './mockProdServer';
-        //   setupProdMockServer();
-        // `,
+        // mockPath: "mock",
+        // logger: true,
+        // watchFiles: true,
+        // localEnabled: command === 'serve',
+        // prodEnabled: command !== 'serve' && prodMock,
+        injectCode: `
+          import { setupProdMockServer } from './mockProdServer';
+          setupProdMockServer();
+        `,
       }),
     ],
    
