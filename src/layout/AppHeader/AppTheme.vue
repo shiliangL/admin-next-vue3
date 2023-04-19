@@ -3,7 +3,8 @@
     <el-icon @click="setVisible">
       <Setting />
     </el-icon>
-    <AppSettingDrawer :modelValue="visible" />
+    {{  visible  }}
+    <AppSettingDrawer v-model="visible" />
   </div>
 </template>
   
@@ -18,8 +19,8 @@ console.log(`style`, style);
 const visible = ref(false)
 
 function setVisible() {
-  console.log(`this`, this);
-  visible.value = !visible.value
+    visible.value = !visible.value
+    console.log(`this`, visible.value);
 }
 </script>
   

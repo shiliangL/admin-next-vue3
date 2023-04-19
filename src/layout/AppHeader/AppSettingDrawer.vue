@@ -22,14 +22,9 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-  }
-})
-const emit = defineEmits(['change'])
-function closed(){
-  emit('change', false)
+defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+function closed() {
+  emit('update:modelValue', false)
 }
-console.log(props);
 </script>
