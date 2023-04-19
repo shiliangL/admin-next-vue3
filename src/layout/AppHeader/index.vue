@@ -1,7 +1,7 @@
 <template>
   <div class="app_header">
     <div class="app_header_item left">
-      <div class="collapse_icon active">
+      <div class="collapse_icon active" @click="handlerClickCollapse">
         <el-icon>
           <Expand />
         </el-icon>
@@ -36,9 +36,17 @@
 
 <!-- {/* <el-icon><Expand /></el-icon> */} -->
 <script setup>
+import { useAppStore } from '@/stores/app'
 import AppTheme from './AppTheme.vue'
 import AppBreadcrumb from './Breadcrumb.vue'
 import { Expand, Fold, FullScreen, CopyDocument } from '@element-plus/icons-vue'
+
+const appStore = useAppStore()
+
+function handlerClickCollapse(){
+  appStore.SET_COLLAPSE_MENU()
+}
+
 </script>
 
 <style lang="scss">

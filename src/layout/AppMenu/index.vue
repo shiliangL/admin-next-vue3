@@ -51,10 +51,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useAppStore } from '@/stores/app'
 import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 
-const isCollapse = ref(false)
+const appStore = useAppStore()
+const isCollapse = computed(()=> (appStore.isCollapse))
+
 const handleOpen = (key, keyPath) => {
   console.log(key, keyPath)
 }
