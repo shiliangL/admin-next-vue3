@@ -1,0 +1,8 @@
+.click,
+.active {
+    cursor: pointer;
+
+    &:active {
+        opacity: 0.78;
+    }
+}

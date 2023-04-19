@@ -13,7 +13,7 @@ export const style = {
         background: '#000'
       },
       header: {
-        background: '#fff',
+        background: '#000',
         textColor: '#303133',
         itemHoverColor: 'rgba(0,0,0,.025)',
         breadcrumbTextColor: '#606266',

@@ -22,7 +22,6 @@ import AppMenu from './AppMenu/index.vue'
 import AppHeader from './AppHeader/index.vue'
 import AppFooter from './AppFooter/index.vue'
 import AppRouterBody from './AppRouterBody/index.vue'
-
 </script>
 
 <style lang="scss">
@@ -30,10 +29,22 @@ import AppRouterBody from './AppRouterBody/index.vue'
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-
-  .el-header{
+  .el-header {
     --el-header-height: 50px;
-    --el-header-padding: 0 18px;
+    --el-header-padding: 0 0;
+
+    --el-text-color-regular: #fff;
+    --el-text-color-primary: #fff;
+    background-color: var(--header_background);
+  }
+
+  .el-main {
+    --el-main-padding: 10px;
+  }
+
+  .el-footer {
+    --el-footer-height: 30px;
+    --el-footer-padding: 0 10px;
   }
 }
 </style>

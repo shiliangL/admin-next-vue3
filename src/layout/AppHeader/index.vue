@@ -1,15 +1,17 @@
 <template>
   <div class="app_header">
-    <div class="app_header_item">
-      <el-icon>
-        <Expand />
-      </el-icon>
-      <el-icon>
-        <Fold />
-      </el-icon>
+    <div class="app_header_item left">
+      <div class="collapse_icon active">
+        <el-icon>
+          <Expand />
+        </el-icon>
+        <el-icon v-if="0">
+          <Fold />
+        </el-icon>
+      </div>
       <AppBreadcrumb />
     </div>
-    <div class="app_header_item">
+    <div class="app_header_item right">
       <el-icon class="header_icon_item">
         <FullScreen />
       </el-icon>
@@ -19,9 +21,7 @@
       <AppTheme class="header_icon_item"></AppTheme>
       <div class="header_user_item">
         <el-dropdown>
-          <span class="el-dropdown-link">
-            管理员
-          </span>
+          <span class="el-dropdown-link"> 管理员 </span>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>修改密码</el-dropdown-item>
@@ -36,8 +36,8 @@
 
 <!-- {/* <el-icon><Expand /></el-icon> */} -->
 <script setup>
-import  AppTheme from './AppTheme.vue'
-import  AppBreadcrumb from './Breadcrumb.vue'
+import AppTheme from './AppTheme.vue'
+import AppBreadcrumb from './Breadcrumb.vue'
 import { Expand, Fold, FullScreen, CopyDocument } from '@element-plus/icons-vue'
 </script>
 
@@ -46,20 +46,38 @@ import { Expand, Fold, FullScreen, CopyDocument } from '@element-plus/icons-vue'
   height: 100%;
   width: 100%;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--app_header_background);
+
+  .collapse_icon {
+    left: 0px;
+    font-size: 22px;
+    margin-right: 6px;
+    width: var(--el-header-height);
+    height: var(--el-header-height);
+    background: #1d1d1d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .app_header_item {
     display: flex;
     align-items: center;
+    &.right{
+      padding-right: 20px;
+    }
   }
-  .el-icon{
+
+  .el-icon {
     cursor: pointer;
+    --color: var(--el-text-color-primary);
   }
-  .header_icon_item{
+  .header_icon_item {
     padding: 0 6px;
   }
-  .header_user_item{
+  .header_user_item {
     margin-left: 6px;
   }
 }
