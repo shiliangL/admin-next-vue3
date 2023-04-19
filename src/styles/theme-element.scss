@@ -1,0 +1,39 @@
+$--color-primary: #0480FF;
+$--color-success: #2DE88D;
+$--color-warning: #FFCA28;
+$--color-danger: #FF6666;
+$--color-info: #2c2c2c;
+
+$--color-text-primary: #E8E8E8;
+$--color-text-regular: #CACACA;
+$--color-text-secondary: #DBDBDB;
+
+$--color-white: #000000;
+$--color-black: #FFFFFF;
+
+$--background-color-base: #0D3657;
+$--border-color-base: #023366;
+$--border-color-light: #023366;
+$--border-color-lighter: #023366;
+$--border-color-extra-light: #023366;
+$--input-icon-color: #0480FF;
+$--input-placeholder-color: #01BEFF;
+
+
+$--input-placeholder-color: #01BEFF;
+$--table-header-background-color: #0F2A49;
+$--table-row-hover-background-color: #0C1F35;
+
+$--button-font-weight: 400;
+$--button-default-font-color: #F5F5F5;
+$--button-primary-font-color: #D5D5D5;
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with ($colors: (
+        'primary': ('base': $--color-primary),
+        'success': ('base': $--color-success,),
+        'warning': ('base': $--color-warning,),
+        'danger': ('base': $--color-danger,),
+        'error': ('base': $--color-danger,),
+        'info': ('base': $--color-info,),
+    ),
+    $button-padding-horizontal: ("default": 10px));
