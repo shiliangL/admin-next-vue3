@@ -1,5 +1,9 @@
 {
     "include": [
-        "./src/*"
-, "mock"    ]
+        "./src/*",
+        "mock"
+    ],
+    "compilerOptions": {
+        "allowJs": true,
+    }
 }

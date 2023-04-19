@@ -3,9 +3,11 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { viteMockServe } from 'vite-plugin-mock'
+
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 
 // https://vitejs.dev/config/
 export default ({ mode,command })=> {
@@ -39,27 +41,31 @@ export default ({ mode,command })=> {
       vue(),
       vueJsx(),
       AutoImport({
-        resolvers: [ElementPlusResolver({
-          importStyle: 'sass'
-        })],
+        resolvers: [
+          ElementPlusResolver({
+            importStyle: 'sass'
+          })
+        ],
       }),
       Components({
-        resolvers: [ElementPlusResolver({
-          importStyle: 'sass'
-        })],
+        resolvers: [
+          ElementPlusResolver({
+            importStyle: 'sass'
+          })
+       ],
       }),
       viteMockServe({
-        // mockPath: "mock",
-        // logger: true,
-        // watchFiles: true,
-        // localEnabled: command === 'serve',
-        // prodEnabled: command !== 'serve' && prodMock,
+        enable: true,
+        mockPath: "mock",
+        logger: true,
+        watchFiles: true,
+        localEnabled: command === 'serve',
+        prodEnabled: command !== 'serve' && prodMock,
         injectCode: `
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
         `,
       }),
     ],
-   
   })
 }

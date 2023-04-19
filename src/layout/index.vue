@@ -33,7 +33,7 @@ import AppRouterBody from './AppRouterBody/index.vue'
 
   .el-header{
     --el-header-height: 50px;
-    --el-header-padding: 0 10px;
+    --el-header-padding: 0 18px;
   }
 }
 </style>
