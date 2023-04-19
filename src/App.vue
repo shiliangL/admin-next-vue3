@@ -13,14 +13,14 @@ import locale from 'element-plus/lib/locale/lang/zh-cn'
 
 request({
   url: '/table/list',
-  method: 'post',
+  method: 'get',
   baseURL: '/mock',
 }).then((res) => {
   console.log(`res`, res);
 })
 
 fetch('/mock/table/list',{
-  method:'post'
+  method:'get'
 }).then(res=> res.json()).then((res) => {
   console.log(`sb`, res);
 })

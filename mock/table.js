@@ -1,8 +1,8 @@
 export default [{
   url: '/mock/table/list',
-  method: 'post',
+  method: 'get',
   response: ({ body }) => {
-    const { pageSize } = body
+    const { pageSize } = body || {}
     return {
       code: 200,
       data: {
@@ -32,9 +32,9 @@ export default [{
 },
 {
   url: '/mock/table/page',
-  method: 'post',
+  method: 'get',
   response: ({ body }) => {
-    const { page, pageSize } = body
+    const { page, pageSize } = body || {}
     return {
       code: 200,
       data: {
@@ -64,9 +64,9 @@ export default [{
 },
 {
   url: '/mock/table/category',
-  method: 'post',
+  method: 'get',
   response: ({ body }) => {
-    const { page, pageSize } = body
+    const { page, pageSize } = body || {}
     return {
       code: 200,
       data: {
@@ -86,8 +86,8 @@ export default [{
 },
 {
   url: '/mock/table/tree',
-  method: 'post',
-  response: ({ body }) => {
+  method: 'get',
+  response: () => {
     return {
       code: 200,
       data: [{
@@ -140,8 +140,8 @@ export default [{
 },
 {
   url: '/mock/table/add',
-  method: 'post',
-  response: ({ body }) => {
+  method: 'get',
+  response: () => {
     return {
       code: 200,
       data: {},
@@ -151,8 +151,8 @@ export default [{
 },
 {
   url: '/mock/table/update',
-  method: 'post',
-  response: ({ body }) => {
+  method: 'get',
+  response: () => {
     return {
       code: 200,
       data: {},
@@ -162,8 +162,8 @@ export default [{
 },
 {
   url: '/mock/table/del',
-  method: 'post',
-  response: ({ body }) => {
+  method: 'get',
+  response: () => {
     return {
       code: 200,
       data: {},

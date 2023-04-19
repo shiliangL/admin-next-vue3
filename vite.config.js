@@ -11,8 +11,22 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 export default ({ mode,command })=> {
   console.log( mode,command );
   const prodMock = true
-
  return defineConfig({
+    base: './',
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    },
+    server: {
+      port: 8066,
+      host: '0.0.0.0',
+      open: true
+      // proxy: { // 代理配置
+      //   '/dev': 'https://www.fastmock.site/mock/48cab8545e64d93ff9ba66a87ad04f6b/',
+      //   '/demo/': 'https://api.vxetable.cn/demo/'
+      // }
+    },
     css: {
       preprocessorOptions: {
         scss: {
@@ -35,21 +49,17 @@ export default ({ mode,command })=> {
         })],
       }),
       viteMockServe({
-        mockPath: 'mock',
+        mockPath: "mock",
+        logger: true,
+        watchFiles: true,
         localEnabled: command === 'serve',
         prodEnabled: command !== 'serve' && prodMock,
-        watchFiles: false,
-        injectCode: `
-          import { setupProdMockServer } from '../mockProdServer';
-          setupProdMockServer();
-        `,
-        logger: false
+        // injectCode: `
+        //   import { setupProdMockServer } from './mockProdServer';
+        //   setupProdMockServer();
+        // `,
       }),
     ],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
-    }
+   
   })
 }
