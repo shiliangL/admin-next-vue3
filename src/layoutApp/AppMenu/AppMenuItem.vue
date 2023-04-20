@@ -7,20 +7,20 @@
           :class="{ 'submenu-title-noDropdown': !isNest }"
         >
           <MenuIcon :meta="onlyOneChild.meta || item.meta" />
-          <template #title>{{ langTitle(onlyOneChild.meta?.title) }}</template>
+          <template #title>{{ onlyOneChild.meta?.title }}</template>
         </el-menu-item>
       </Link>
     </template>
     <el-sub-menu v-else :index="resolvePath(item.path)">
       <template v-if="item.meta" #title>
         <MenuIcon :meta="item.meta" />
-        <span>{{ langTitle(item.meta.title) }}</span>
+        <span>{{ item.meta.title }}</span>
       </template>
       <AppMenuItem
-        v-for="child in item.children"
         :key="child.path"
         :is-nest="true"
         :item="child"
+        v-for="child in item.children"
         :base-path="resolvePath(child.path)"
       />
     </el-sub-menu>

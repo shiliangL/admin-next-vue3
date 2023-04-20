@@ -26,12 +26,90 @@ import { computed, reactive } from 'vue'
 import AppMenuItem from './AppMenuItem.vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/stores/app'
-import listJSON from './list.json'
 // import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 
 const appStore = useAppStore()
 const isCollapse = computed(() => appStore.isCollapse)
-const routesList = reactive(listJSON)
+const routesList = reactive([
+{
+  path: '/basic-demo',
+  meta: { title: 'Basic Demo', icon: 'eye-open' },
+  alwaysShow: true,
+  children: [
+    {
+      path: 'hook',
+      name: 'Hook',
+      meta: { title: 'Hook' }
+    },
+    {
+      path: 'pinia',
+      name: 'Pinia',
+      meta: { title: 'Pinia' }
+    },
+    {
+      path: 'mock',
+      name: 'Mock',
+      meta: { title: 'Mock' }
+    },
+    {
+      path: 'svg-icon',
+      name: 'SvgIcon',
+      meta: { title: 'Svg Icon' }
+    },
+    {
+      path: 'parent-children',
+      name: 'Parent',
+      meta: { title: 'Parent Children' }
+    },
+    {
+      path: 'keep-alive-group',
+      name: 'KeepAliveGroup',
+      meta: { title: 'KeepAlive Group', cacheGroup: ['KeepAliveGroup', 'SecondChild', 'ThirdChild'] }
+    },
+    {
+      path: 'second-child',
+      name: 'SecondChild',
+      hidden: true,
+      meta: { title: 'SecondChild', activeMenu: '/basic-demo/second-keep-alive' }
+    },
+    {
+      path: 'third-child',
+      name: 'ThirdChild',
+      hidden: true,
+      meta: { title: 'ThirdChild', activeMenu: '/basic-demo/second-keep-alive' }
+    },
+    {
+      path: 'tab-keep-alive',
+      name: 'TabKeepAlive',
+      meta: { title: 'Tab KeepAlive', cachePage: true, closeTabRmCache: true }
+    },
+    //third-keep-alive
+    {
+      path: 'third-keep-alive',
+      name: 'ThirdKeepAlive',
+      meta: { title: 'Third KeepAlive', cachePage: true, leaveRmCachePage: false },
+      alwaysShow: true,
+      children: [
+        {
+          path: 'second-children',
+          name: 'SecondChildren',
+          meta: { title: 'SecondChildren', cachePage: true, leaveRmCachePage: true }
+        },
+        {
+          path: 'third-children',
+          name: 'ThirdChildren',
+          meta: { title: 'ThirdChildren', cachePage: true, leaveRmCachePage: false }
+        }
+      ]
+    },
+    {
+      path: 'worker',
+      name: 'Worker',
+      meta: { title: 'Worker' }
+    }
+  ]
+}
+])
 
 const routeInstance = useRoute()
 const activeMenu = computed(() => {
