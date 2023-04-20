@@ -9,7 +9,7 @@
       </el-header>
       <AppTabs v-show="showTabs" />
       <el-main>
-        <AppRouterBody></AppRouterBody>
+        <AppRouter></AppRouter>
       </el-main>
       <el-footer>
         <AppFooter></AppFooter>
@@ -25,7 +25,7 @@ import AppMenu from './AppMenu/index.vue'
 import AppTabs from './AppTabs/index.vue'
 import AppHeader from './AppHeader/index.vue'
 import AppFooter from './AppFooter/index.vue'
-import AppRouterBody from './AppRouterBody/index.vue'
+import AppRouter from './AppRouter/index.vue'
 
 const appStore = useAppStore()
 const showTabs = computed(()=> (appStore.showTabs))
@@ -43,6 +43,7 @@ const isCollapse = computed(()=> (appStore.isCollapse))
   .el-aside {
     transition: 0.3s;
     overflow-x: hidden;
+    transition: all .3s cubic-bezier(.645,.045,.355,1),border 0s,color .1s,font-size 0s;
   }
 
   .el-header {

@@ -1,9 +1,6 @@
 <template>
   <div class="app_tabs">
-    <el-tabs
-      type="card"
-      class="tabs_bar_wrapper light_blue"
-    >
+    <el-tabs type="card" class="app_tabs_wrapper">
       <!-- :model-value="route.path" -->
       <el-tab-pane
         v-for="menu in tabList"
@@ -12,146 +9,103 @@
         :name="menu.path"
       >
         <template #label>
-          <router-link
-            :to="menu.path"
-            v-if="menu.meta.title"
-            class="tab_pane_link"
-          >
+          <!-- <router-link :to="menu.path" v-if="menu.meta.title" class="tab_pane_link">
             {{ menu.meta.title }}
-          </router-link>
+          </router-link> -->
+          {{ menu.meta.title }}
         </template>
       </el-tab-pane>
     </el-tabs>
 
-    <!-- <div class="handle">
+    <div class="dropdown_tools">
       <el-dropdown placement="bottom">
-        <div class="el-dropdown-link">
-          <i class="el-icon-arrow-down el-icon--right"></i>
-        </div>
+        <el-icon><Grid /></el-icon>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item
-              icon="el-icon-refresh-left"
-              @click="pageReload"
-            >重新加载</el-dropdown-item>
-            <el-dropdown-item
-              icon="el-icon-circle-close"
-              :disabled="currentDisabled"
-              @click="closeCurrentRoute"
-            >关闭当前标签</el-dropdown-item>
-            <el-dropdown-item
-              icon="el-icon-circle-close"
-              :disabled="tabList.length < 3"
-              @click="closeOtherRoute"
-            >关闭其他标签</el-dropdown-item>
-            <el-dropdown-item
-              icon="el-icon-circle-close"
-              :disabled="tabList.length <= 1"
-              @click="closeAllRoute"
-            >关闭所有标签</el-dropdown-item>
+            <el-dropdown-item :icon="Refresh">重新加载</el-dropdown-item>
+            <el-dropdown-item :icon="Close">关闭当前标签</el-dropdown-item>
+            <el-dropdown-item :icon="Close">关闭其他标签</el-dropdown-item>
+            <el-dropdown-item :icon="Close">关闭所有标签</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-tooltip
-        class="item"
-        effect="dark"
-        :content="contentFullScreen ? '退出全屏' : '内容全屏'"
-        placement="bottom"
-      >
-        <i
-          class="el-icon-full-screen"
-          @click="onFullscreen"
-        ></i>
-      </el-tooltip>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script setup>
+import { Grid,Refresh,Close } from '@element-plus/icons-vue'
 // import { useSlots, h } from "vue";
 // const slots = useSlots();
 // const props = defineProps(['modelValue', 'type'])
-const tabList = [
-  {
-    path: 'dynamic-table1',
-    name: 'DynamicTable1',
-    meta: { title: '菜单1' }
-  },
-  {
-    path: 'dynamic-table2',
-    name: 'DynamicTable2',
-    meta: { title: '菜单2' }
-  },
-  {
-    path: 'dynamic-table3',
-    name: 'DynamicTable3',
-    meta: { title: '菜单3' }
-  },
-]
+const tabList = new Array(50).fill(0).map((item, index) => ({
+  path: 'dynamic-table' + index,
+  name: 'DynamicTable' + index,
+  meta: { title: '菜单' + index }
+}))
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .app_tabs {
-  --app_tabs_padding: 0 10px;
+  --app_tabs_padding: 0 0px;
+  --el-border-color-light: #00000000;
+
+  display: flex;
   padding: var(--app_tabs_padding);
+  border-bottom: solid 1px var(--el-menu-border-color);
 
-  :deep(.tabs_bar_wrapper) {
-    height: 38px;
-    margin: 0 10px;
-    width: calc(100% - 46px);
-
-    .tab_pane_link {
-      width: 100%;
-      height: 100%;
-      display: block;
-      font-size: 14px;
-      font-weight: 520;
-      color: var(--header_tag_item_color);
+  a {
+    display: block;
+    text-decoration: none;
+  }
+  .app_tabs_wrapper {
+    position: relative;
+  }
+  .el-tabs__header {
+    margin: 0;
+  }
+  .app_tabs_wrapper {
+    overflow: hidden;
+  }
+  .dropdown_tools {
+    width: 90px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    .el-icon {
+      font-size: 18px;
     }
+  }
 
-    .el-tabs__header {
-      border: none;
-      // border-bottom: 1px solid #e8f4ff;
+  .el-tabs__item {
+    top: 1px;
+    border: 0;
+    outline: none;
+    user-select: none;
+    position: relative;
+    text-align: center;
+    padding: 0 24px 0 24px !important;
+    transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+    &:hover {
+      padding: 0 32px 0 32px !important;
+      color: var(--el-color-primary);
+      background: #eceef1 !important;
+      -webkit-mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
+      mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
     }
-    .el-tabs__nav {
-      border-bottom: none;
-      box-sizing: border-box;
-      border-radius: 4px 4px 0 0;
-      border: 1px solid transparent;
-      -webkit-box-sizing: border-box;
-    }
-
-    .el-tabs__item {
-      border: 0;
-      height: 38px;
-      margin-top: 6px;
-      margin-right: -18px;
-      line-height: 38px;
-      outline: none;
-      user-select: none;
-      text-align: center;
-      padding: 0 30px 0 30px;
-      transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
-      &:hover {
-        padding: 0 32px 0 32px;
-        color: var(--el-color-primary);
-        background: #eceef1 !important;
-        -webkit-mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
-        mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
-        -webkit-mask-size: 100% 100%;
-        mask-size: 100% 100%;
-      }
-      &.is-active {
-        padding: 0 32px 0 32px;
+    &.is-active {
+      padding: 0 32px 0 32px !important;
+      color: #1890ff !important;
+      background: #e8f4ff !important;
+      -webkit-mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
+      mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+      .tab_pane_link {
         color: #1890ff !important;
-        background: #e8f4ff !important;
-        -webkit-mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
-        mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAAkBAMAAAAdqzmBAAAAMFBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlTPQ5AAAAD3RSTlMAr3DvEM8wgCBA379gj5//tJBPAAAAnUlEQVRIx2NgAAM27fj/tAO/xBsYkIHyf9qCT8iWMf6nNQhAsk2f5rYheY7Dnua2/U+A28ZEe8v+F9Ax2v7/F4DbxkUH2wzgtvHTwbYPo7aN2jZq26hto7aN2jZq25Cy7Qvctnw62PYNbls9HWz7S8/G6//PsI6H4396gAUQy1je08W2jxDbpv6nD4gB2uWp+J9eYPsEhv/0BPS1DQBvoBLVZ3BppgAAAABJRU5ErkJggg==);
-        -webkit-mask-size: 100% 100%;
-        mask-size: 100% 100%;
-        .tab_pane_link {
-          color: #1890ff !important;
-        }
       }
     }
   }
