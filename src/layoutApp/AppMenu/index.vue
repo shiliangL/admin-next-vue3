@@ -6,7 +6,7 @@
     <el-scrollbar class="app_menu_scrollbar">
       <el-menu
         mode="vertical"
-        :collapse="!isCollapse"
+        :collapse="isCollapse"
         :default-active="activeMenu"
         :collapse-transition="false"
       >
