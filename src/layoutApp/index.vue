@@ -43,7 +43,6 @@ const isCollapse = computed(()=> (appStore.isCollapse))
   .el-aside {
     transition: 0.3s;
     overflow-x: hidden;
-    border-right: solid 1px var(--el-menu-border-color);
   }
 
   .el-header {
