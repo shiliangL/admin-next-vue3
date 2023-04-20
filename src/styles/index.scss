@@ -6,3 +6,7 @@
         opacity: 0.78;
     }
 }
+
+*:focus-visible {
+    outline: 0;
+}

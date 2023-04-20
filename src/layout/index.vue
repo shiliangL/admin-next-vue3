@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout">
-    <el-aside class="layout_aside" :width="isCollapse ? '60px' : '250px'">
+    <el-aside class="layout_aside" :width="isCollapse ? '64px' : '250px'">
       <AppMenu></AppMenu>
     </el-aside>
     <el-container class="layout_container">
@@ -43,6 +43,7 @@ const isCollapse = computed(()=> (appStore.isCollapse))
   .el-aside {
     transition: 0.3s;
     overflow-x: hidden;
+    border-right: solid 1px var(--el-menu-border-color);
   }
 
   .el-header {

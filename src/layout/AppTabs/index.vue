@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app_tabs">
         AppTabs
         <Headers></Headers>
         <Body></Body>
@@ -33,5 +33,9 @@ const Headers = () => {
 </script>
 
 <style lang="scss" scoped>
-
+.app_tabs{
+  --app_tabs_padding: 0 10px;
+  padding: var(--app_tabs_padding);
+  background: #ddd;
+}
 </style>
