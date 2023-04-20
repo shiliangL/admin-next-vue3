@@ -11,3 +11,7 @@ export function getLocalStorage ({ key }) {
 export function clearLocalStorage () {
   return store.clear()
 }
+
+export function isExternal(path) {
+  return /^(https?:|mailto:|tel:)/.test(path)
+}
