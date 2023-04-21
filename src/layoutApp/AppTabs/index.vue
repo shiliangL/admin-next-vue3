@@ -34,11 +34,16 @@
 </template>
 
 <script setup>
+// import { storeToRefs } from 'pinia'
+// import { resolve } from 'path-browserify'
+// import { useRoute, useRouter } from 'vue-router'
+// import { useTagsViewStore } from '@/store/tags-view'
+// import { getCurrentInstance, nextTick, onMounted, reactive, toRefs, watch } from 'vue'
 import { Grid,Refresh,Close } from '@element-plus/icons-vue'
 // import { useSlots, h } from "vue";
 // const slots = useSlots();
 // const props = defineProps(['modelValue', 'type'])
-const tabList = new Array(50).fill(0).map((item, index) => ({
+const tabList = new Array(4).fill(0).map((item, index) => ({
   path: 'dynamic-table' + index,
   name: 'DynamicTable' + index,
   meta: { title: '菜单' + index }
@@ -59,16 +64,14 @@ const tabList = new Array(50).fill(0).map((item, index) => ({
     text-decoration: none;
   }
   .app_tabs_wrapper {
+    flex: 1;
     position: relative;
   }
   .el-tabs__header {
     margin: 0;
   }
-  .app_tabs_wrapper {
-    overflow: hidden;
-  }
   .dropdown_tools {
-    width: 90px;
+    width: 60px;
     display: flex;
     cursor: pointer;
     align-items: center;
