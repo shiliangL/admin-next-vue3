@@ -1,4 +1,4 @@
-.loading {
+.loading_wrapper {
     top: 0;
     left: 0;
     z-index: 1;
@@ -15,20 +15,41 @@
     background-image: url(../imgs/loading.jpg);
 }
 
-.plane {
+.loading {
     width: 2em;
     height: 2em;
-    transform: rotate(0);
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #0480FF;
+    animation: spin 3s ease infinite;
+  }
+  
+  .loading::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 2em;
+    height: 2em;
     background-color: #0480FF;
-    animation: flip 1s infinite;
-}
-
-@keyframes flip {
-    50% {
-        transform: rotateY(180deg);
-    }
-
+    transform-origin: center bottom;
+    transform: scaleY(1);
+    animation: fill 3s linear infinite;
+  }
+  
+  @keyframes spin {
+    50%,
     100% {
-        transform: rotateY(180deg) rotateX(180deg);
+      transform: rotate(360deg);
     }
-}
+  }
+  
+  @keyframes fill {
+    25%,
+    50% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
