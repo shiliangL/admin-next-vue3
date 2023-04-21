@@ -25,11 +25,11 @@
 import { computed, reactive } from 'vue'
 import MenuItem from './MenuItem.vue'
 import { useRoute } from 'vue-router'
-import { useAppStore } from '@/stores/app'
+import { useAppSettingStore } from '@/stores/appSetting'
 // import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 
-const appStore = useAppStore()
-const isCollapse = computed(() => appStore.isCollapse)
+const appSettingState = useAppSettingStore()
+const isCollapse = computed(() => appSettingState.state.isCollapse)
 const routesList = reactive([
 {
   path: '/',

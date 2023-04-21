@@ -1,13 +1,11 @@
 <template>
   <div class="app_router_body">
     <router-view v-slot="{ Component }">
-      <!--has transition  setting by settings.mainNeedAnimation-->
-      <transition v-if="settings.mainNeedAnimation" name="fade-transform" mode="out-in">
+      <transition v-if="mainNeedAnimation" name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
           <component :is="Component" />
         </keep-alive>
       </transition>
-      <!-- no transition -->
       <keep-alive v-else :include="cachedViews">
         <component :is="Component" />
       </keep-alive>
@@ -16,11 +14,14 @@
 </template>
   
 <script setup>
-import { ref, reactive } from 'vue'
-const cachedViews = ref()
-const settings = reactive({
-  mainNeedAnimation: true
-})
+import { ref, computed } from 'vue'
+import { useAppSettingStore } from '@/stores/appSetting'
+
+const appSettingStore = useAppSettingStore()
+const mainNeedAnimation = computed(() => appSettingStore.state.mainNeedAnimation)
+
+const cachedViews = ref([])
+ 
 </script>
 
 <style lang="scss">

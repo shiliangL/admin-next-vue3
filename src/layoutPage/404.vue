@@ -31,8 +31,7 @@
         <el-button
           @click="go"
           type="primary"
-          round
-        >返回</el-button>
+        >返回上一页</el-button>
       </div>
     </div>
   </div>

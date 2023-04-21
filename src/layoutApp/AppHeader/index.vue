@@ -1,12 +1,10 @@
 <template>
   <div class="app_header">
     <div class="app_header_item left">
-      <div class="collapse_icon active" @click="handlerClickCollapse">
+      <div class="collapse_icon active" @click="clickChangeCollapse">
         <el-icon>
-          <Expand />
-        </el-icon>
-        <el-icon v-if="0">
-          <Fold />
+          <Expand v-if="isCollapse" />
+          <Fold v-else  />
         </el-icon>
       </div>
       <AppBreadcrumb />
@@ -34,17 +32,21 @@
   </div>
 </template>
 
-<!-- {/* <el-icon><Expand /></el-icon> */} -->
 <script setup>
-import { useAppStore } from '@/stores/app'
+import { computed } from 'vue'
 import AppTheme from './AppTheme.vue'
-import AppBreadcrumb from './Breadcrumb.vue'
+import AppBreadcrumb from './AppBreadcrumb.vue'
+import { useAppSettingStore } from '@/stores/appSetting'
 import { Expand, Fold, FullScreen, CopyDocument } from '@element-plus/icons-vue'
 
-const appStore = useAppStore()
+const appSettingStore = useAppSettingStore()
 
-function handlerClickCollapse(){
-  appStore.SET_COLLAPSE_MENU()
+const isCollapse = computed(()=>{
+  return appSettingStore.state.isCollapse
+})
+
+function clickChangeCollapse(){
+  appSettingStore.setAppSettingState({key:'isCollapse', value: !isCollapse.value })
 }
 
 </script>

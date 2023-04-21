@@ -20,16 +20,16 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useAppStore } from '@/stores/app'
+import { useAppSettingStore } from '@/stores/appSetting'
 import AppMenu from './AppMenu/index.vue'
 import AppTabs from './AppTabs/index.vue'
 import AppHeader from './AppHeader/index.vue'
 import AppFooter from './AppFooter/index.vue'
 import AppRouter from './AppRouter/index.vue'
 
-const appStore = useAppStore()
-const showTabs = computed(()=> (appStore.showTabs))
-const isCollapse = computed(()=> (appStore.isCollapse))
+const appSettingStore = useAppSettingStore()
+const showTabs = computed(()=> (appSettingStore.state.showTabs))
+const isCollapse = computed(()=> (appSettingStore.state.isCollapse))
 
 
 </script>
