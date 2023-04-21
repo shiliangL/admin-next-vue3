@@ -44,6 +44,10 @@ const isCollapse = computed(()=> (appStore.isCollapse))
     transition: 0.3s;
     overflow-x: hidden;
     transition: all .3s cubic-bezier(.645,.045,.355,1),border 0s,color .1s,font-size 0s;
+
+    --el-menu-item-height: 54px;
+    --aside_right_border_color: #dcdfe6;
+    --el-menu-border-color: #00000000;
   }
 
   .el-header {

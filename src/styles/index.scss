@@ -1,10 +1,13 @@
 .click,
 .active {
     cursor: pointer;
-
     &:active {
         opacity: 0.78;
     }
+}
+
+a {
+    text-decoration: none;
 }
 
 *:focus-visible {

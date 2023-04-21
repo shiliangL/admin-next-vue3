@@ -10,7 +10,7 @@
         :default-active="activeMenu"
         :collapse-transition="false"
       >
-        <AppMenuItem
+        <menu-item
           v-for="route in routesList"
           :key="route.path"
           :item="route"
@@ -23,7 +23,7 @@
 
 <script setup>
 import { computed, reactive } from 'vue'
-import AppMenuItem from './AppMenuItem.vue'
+import MenuItem from './MenuItem.vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 // import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
@@ -126,8 +126,9 @@ const activeMenu = computed(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  .app_menu_bar {
+  .app_menu_scrollbar {
     flex: 1;
+    border-right:1px solid var(--aside_right_border_color) ;
   }
 }
 </style>

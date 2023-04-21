@@ -1,7 +1,7 @@
 <template>
   <template v-if="!item.hidden">
     <template v-if="showSidebarItem(item.children, item)">
-      <Link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
+      <MenuLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item
           :index="resolvePath(onlyOneChild.path)"
           :class="{ 'submenu-title-noDropdown': !isNest }"
@@ -9,14 +9,14 @@
           <MenuIcon :meta="onlyOneChild.meta || item.meta" />
           <template #title>{{ onlyOneChild.meta?.title }}</template>
         </el-menu-item>
-      </Link>
+      </MenuLink>
     </template>
     <el-sub-menu v-else :index="resolvePath(item.path)">
       <template v-if="item.meta" #title>
         <MenuIcon :meta="item.meta" />
         <span>{{ item.meta.title }}</span>
       </template>
-      <AppMenuItem
+      <menu-item
         :key="child.path"
         :is-nest="true"
         :item="child"
@@ -29,7 +29,7 @@
  
 <script setup>
 import { ref } from 'vue'
-import Link from './link.vue'
+import MenuLink from './menuLink.vue'
 import MenuIcon from './menuIcon.vue'
 import { resolve } from 'path-browserify'
 import { isExternal } from '@/utils/index'
@@ -52,7 +52,6 @@ const props = defineProps({
   }
 })
 
-console.log(props)
 const onlyOneChild = ref()
 const showSidebarItem = (children = [], parent) => {
   const showingChildren = children.filter((item) => {
