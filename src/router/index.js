@@ -7,7 +7,21 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Layout
+      component: Layout,
+      children: [
+        {
+          path: 'pinia',
+          name: 'pinia',
+          meta: { title: 'pinia' },
+          component: () => import('@/views/HomeView.vue')
+        },
+        {
+          path: 'about',
+          name: 'about',
+          meta: { title: 'about' },
+          component: () => import('@/views/AboutView.vue')
+        },
+      ]
     },
     {
       path: '/login',

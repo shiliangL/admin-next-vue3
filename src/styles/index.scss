@@ -1,6 +1,7 @@
 .click,
 .active {
     cursor: pointer;
+
     &:active {
         opacity: 0.78;
     }
@@ -12,4 +13,19 @@ a {
 
 *:focus-visible {
     outline: 0;
+}
+
+html,
+body,
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+.flex_center_page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

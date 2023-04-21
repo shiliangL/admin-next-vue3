@@ -1,5 +1,5 @@
 <template>
-  <div class="wscn-http404-container layout-container flex center">
+  <div class="flex_center_page">
     <div class="wscn-http404">
       <div class="pic-404">
         <img
@@ -32,7 +32,7 @@
           @click="go"
           type="primary"
           round
-        >跳转首页</el-button>
+        >返回</el-button>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@ export default defineComponent({
   },
   methods: {
     go() {
-      this.$router.push('/')
+      this.$router.go(-1)
     }
   }
 })

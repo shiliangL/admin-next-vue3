@@ -32,19 +32,19 @@ const appStore = useAppStore()
 const isCollapse = computed(() => appStore.isCollapse)
 const routesList = reactive([
 {
-  path: '/basic-demo',
+  path: '/',
   meta: { title: 'Basic Demo', icon: 'eye-open' },
   alwaysShow: true,
   children: [
     {
-      path: 'hook',
-      name: 'Hook',
-      meta: { title: 'Hook' }
+      path: 'about',
+      name: 'about',
+      meta: { title: 'about' }
     },
     {
       path: 'pinia',
-      name: 'Pinia',
-      meta: { title: 'Pinia' }
+      name: 'pinia',
+      meta: { title: 'pinia' }
     },
     {
       path: 'mock',

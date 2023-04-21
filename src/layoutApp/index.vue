@@ -61,6 +61,7 @@ const isCollapse = computed(()=> (appStore.isCollapse))
 
   .el-main {
     --el-main-padding: 10px;
+    // background: var(--container_background);
   }
 
   .el-footer {
