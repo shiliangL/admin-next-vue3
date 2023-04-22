@@ -33,85 +33,139 @@ const isCollapse = computed(() => appSettingState.state.isCollapse)
 const routesList = reactive([
   {
     path: '/',
-    meta: { title: 'Basic Demo', icon: 'eye-open' },
+    meta: { title: '实时视频' },
     alwaysShow: true,
     children: [
       {
-        path: 'about',
-        name: 'about',
-        meta: { title: 'about' }
+        path: 'Channel1',
+        name: 'Channel1',
+        meta: { title: 'Channel1' }
       },
       {
-        path: 'pinia',
-        name: 'pinia',
-        meta: { title: 'pinia' }
+        path: 'Channel2',
+        name: 'Channel2',
+        meta: { title: 'Channel2' }
       },
       {
-        path: 'mock',
-        name: 'Mock',
-        meta: { title: 'Mock' }
+        path: 'Channel3',
+        name: 'Channel3',
+        meta: { title: 'Channel3' }
       },
       {
-        path: 'svg-icon',
-        name: 'SvgIcon',
-        meta: { title: 'Svg Icon' }
-      },
-      {
-        path: 'parent-children',
-        name: 'Parent',
-        meta: { title: 'Parent Children' }
-      },
-      {
-        path: 'keep-alive-group',
-        name: 'KeepAliveGroup',
-        meta: {
-          title: 'KeepAlive Group',
-          cacheGroup: ['KeepAliveGroup', 'SecondChild', 'ThirdChild']
-        }
-      },
-      {
-        path: 'second-child',
-        name: 'SecondChild',
-        hidden: true,
-        meta: { title: 'SecondChild', activeMenu: '/basic-demo/second-keep-alive' }
-      },
-      {
-        path: 'third-child',
-        name: 'ThirdChild',
-        hidden: true,
-        meta: { title: 'ThirdChild', activeMenu: '/basic-demo/second-keep-alive' }
-      },
-      {
-        path: 'tab-keep-alive',
-        name: 'TabKeepAlive',
-        meta: { title: 'Tab KeepAlive', cachePage: true, closeTabRmCache: true }
-      },
-      //third-keep-alive
-      {
-        path: 'third-keep-alive',
-        name: 'ThirdKeepAlive',
-        meta: { title: 'Third KeepAlive', cachePage: true, leaveRmCachePage: false },
-        alwaysShow: true,
-        children: [
-          {
-            path: 'second-children',
-            name: 'SecondChildren',
-            meta: { title: 'SecondChildren', cachePage: true, leaveRmCachePage: true }
-          },
-          {
-            path: 'third-children',
-            name: 'ThirdChildren',
-            meta: { title: 'ThirdChildren', cachePage: true, leaveRmCachePage: false }
-          }
-        ]
-      },
-      {
-        path: 'worker',
-        name: 'Worker',
-        meta: { title: 'Worker' }
+        path: 'Channel4',
+        name: 'Channel4',
+        meta: { title: 'Channel4' }
       }
     ]
-  }
+  },
+  {
+    path: '/history',
+    meta: { title: '历史视频' },
+    alwaysShow: true,
+    children: [
+    {
+        path: 'Channel1',
+        name: 'Channel1',
+        meta: { title: 'Channel1' }
+      },
+      {
+        path: 'Channel2',
+        name: 'Channel2',
+        meta: { title: 'Channel2' }
+      },
+      {
+        path: 'Channel3',
+        name: 'Channel3',
+        meta: { title: 'Channel3' }
+      },
+      {
+        path: 'Channel4',
+        name: 'Channel4',
+        meta: { title: 'Channel4' }
+      }
+    ]
+  },
+  // {
+  //   path: '/',
+  //   meta: { title: 'Basic Demo' },
+  //   alwaysShow: true,
+  //   children: [
+  //     {
+  //       path: 'about',
+  //       name: 'about',
+  //       meta: { title: 'about' }
+  //     },
+  //     {
+  //       path: 'pinia',
+  //       name: 'pinia',
+  //       meta: { title: 'pinia' }
+  //     },
+  //     {
+  //       path: 'mock',
+  //       name: 'Mock',
+  //       meta: { title: 'Mock' }
+  //     },
+  //     {
+  //       path: 'svg-icon',
+  //       name: 'SvgIcon',
+  //       meta: { title: 'Svg Icon' }
+  //     },
+  //     {
+  //       path: 'parent-children',
+  //       name: 'Parent',
+  //       meta: { title: 'Parent Children' }
+  //     },
+  //     {
+  //       path: 'keep-alive-group',
+  //       name: 'KeepAliveGroup',
+  //       meta: {
+  //         title: 'KeepAlive Group',
+  //         cacheGroup: ['KeepAliveGroup', 'SecondChild', 'ThirdChild']
+  //       }
+  //     },
+  //     {
+  //       path: 'second-child',
+  //       name: 'SecondChild',
+  //       hidden: true,
+  //       meta: { title: 'SecondChild', activeMenu: '/basic-demo/second-keep-alive' }
+  //     },
+  //     {
+  //       path: 'third-child',
+  //       name: 'ThirdChild',
+  //       hidden: true,
+  //       meta: { title: 'ThirdChild', activeMenu: '/basic-demo/second-keep-alive' }
+  //     },
+  //     {
+  //       path: 'tab-keep-alive',
+  //       name: 'TabKeepAlive',
+  //       meta: { title: 'Tab KeepAlive', cachePage: true, closeTabRmCache: true }
+  //     },
+  //     //third-keep-alive
+  //     {
+  //       path: 'third-keep-alive',
+  //       name: 'ThirdKeepAlive',
+  //       meta: { title: 'Third KeepAlive', cachePage: true, leaveRmCachePage: false },
+  //       alwaysShow: true,
+  //       children: [
+  //         {
+  //           path: 'second-children',
+  //           name: 'SecondChildren',
+  //           meta: { title: 'SecondChildren', cachePage: true, leaveRmCachePage: true }
+  //         },
+  //         {
+  //           path: 'third-children',
+  //           name: 'ThirdChildren',
+  //           meta: { title: 'ThirdChildren', cachePage: true, leaveRmCachePage: false }
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: 'worker',
+  //       name: 'Worker',
+  //       meta: { title: 'Worker' }
+  //     }
+  //   ]
+  // }
 ])
 
 const routeInstance = useRoute()

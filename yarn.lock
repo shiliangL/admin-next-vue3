@@ -292,6 +292,11 @@
   resolved "https://registry.npmmirror.com/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz#53fa5fe9c34faee89469e48f91d51a3766108bc8"
   integrity sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==
 
+"@easydarwin/easyplayer@^4.1.0":
+  version "4.1.4"
+  resolved "https://registry.npmmirror.com/@easydarwin/easyplayer/-/easyplayer-4.1.4.tgz#06ce4f4602e079e73947511eac835a19c8df1a45"
+  integrity sha512-WGjYUVhop617SVxC4Z1+MP+LxWER+1l+TzRTwZEUwCoiA8BA7B/AljfpV7lMFON9hlijb1ughyEXRuf0s5Cvpg==
+
 "@element-plus/icons-vue@^2.0.6", "@element-plus/icons-vue@^2.1.0":
   version "2.1.0"
   resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz#7ad90d08a8c0d5fd3af31c4f73264ca89614397a"

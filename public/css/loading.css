@@ -12,7 +12,7 @@
     flex-direction: column;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(../imgs/loading.jpg);
+    /* background-image: url(../imgs/loading.jpg); */
 }
 
 .loading {
