@@ -45,14 +45,16 @@ const isCollapse = computed(()=> (appSettingStore.state.isCollapse))
     overflow-x: hidden;
     transition: all .3s cubic-bezier(.645,.045,.355,1),border 0s,color .1s,font-size 0s;
 
-    --el-menu-item-height: 54px;
+
+    --el-menu-item-height: var(--header_height);
+    --el-menu-text-color: var(--menu_textColor);
     --aside_right_border_color: #dcdfe6;
     --el-menu-border-color: #00000000;
   }
 
   .el-header {
-    --el-header-height: 50px;
     --el-header-padding: 0 0;
+    --el-header-height: var(--header_height);
 
     --el-text-color-regular: #fff;
     --el-text-color-primary: #fff;

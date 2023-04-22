@@ -6,13 +6,15 @@ export const style = {
         background: '#000',
         childrenBackground: '#000',
         hoverBackground: '#000c17',
-        submenuActiveColor: '#fff'
+        submenuActiveColor: '#fff',
+        rightBorderColor: ''
       },
       logo: {
         color: '#fff',
         background: '#000'
       },
       header: {
+        height: '50px',
         background: '#000',
         textColor: '#303133',
         itemHoverColor: 'rgba(0,0,0,.025)',
